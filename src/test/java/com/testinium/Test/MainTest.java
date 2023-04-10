@@ -12,6 +12,8 @@ public class MainTest extends BaseTest {
     public void mainTest() throws Exception {
         Methods methods = new Methods();
 
+        //Üyelik oluşturma,Giriş yapma,Random Ürün seçme ve Başarısız kart ödemesi sonrasında hesaptan cıkış yapma adımlarını takip eden bir test senaryosu.
+
 
 
         // Giriş yap'a tıklanır
@@ -30,7 +32,7 @@ public class MainTest extends BaseTest {
         methods.waitBySeconds(2);
         //Giriş yap butonuna tıklanır
         methods.click(By.cssSelector(".ky-btn.ky-btn-orange.w-100.ky-login-btn"));
-        methods.waitBySeconds(2);
+        methods.waitBySeconds(10); //Giriş işleminde çıkma ihtimali olan doğrulama için 10sn verildi
 
         //Başarılı şekilde giriş yapıldığı kontrol edilir
         String basarılıGiris = methods.getText(By.cssSelector(".common-sprite"));
@@ -77,6 +79,8 @@ public class MainTest extends BaseTest {
         methods.selectByText(By.xpath("//select[@onchange='location = this.value;']"), "Yüksek Oylama");
         methods.waitBySeconds(3);
 
+
+
         //Tüm kitaplardan "Hobi" kısmına gidilir
         methods.click(By.xpath("//span[.=\"Tüm Kitaplar\"]"));
         methods.waitBySeconds(2);
@@ -84,21 +88,23 @@ public class MainTest extends BaseTest {
         methods.waitBySeconds(3);
 
         //Rastgele bir kitap seçilir ve sepete eklenir
-        methods.click(By.xpath("//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11534498/wi:100/wh:true']"));
-        methods.waitBySeconds(2);
-        methods.scrollWithAction(By.xpath("//a[@href='https://www.kitapyurdu.com/yazar/sumeyye-eroglu/199990.html']"));
+        methods.scrollWithAction(By.xpath("//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11534498/wi:100/wh:true']"));
+        methods.waitBySeconds(5);
+        methods.random(); //Methods kısmında oluşturduğum random seçimle ürün seçilir
         methods.waitBySeconds(3);
         methods.click(By.xpath("//a[@class='add-to-cart btn-orange btn-ripple']"));
         methods.waitBySeconds(3);
+
+
 
         //Listelerimden favorilerime gidilir
         methods.click(By.xpath("//a[.=\"Listelerim\"]"));
         methods.waitBySeconds(3);
         methods.click(By.xpath("//a[@href='https://www.kitapyurdu.com/index.php?route=account/favorite&selected_tags=0']"));
-        methods.waitBySeconds(2);
+        methods.waitBySeconds(3);
 
         // 3.favori ürün favorilerden çıkarılır
-        methods.scrollWithAction(By.xpath("//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11652625/wi:100/wh:true']"));
+        methods.scrollWithAction(By.xpath("//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11366216/wi:100/wh:true']"));
         methods.waitBySeconds(2);
         methods.click(By.xpath("//div[@class='product-list']/div[3]//i[@class='fa fa-heart-o']"));
         methods.waitBySeconds(2);
@@ -228,7 +234,7 @@ public class MainTest extends BaseTest {
         methods.MouseMove(By.xpath("//a[.='Merhaba Mehmet Akın']"));
         methods.waitBySeconds(2);
         methods.click(By.xpath("//a[.='Çıkış']"));
-        methods.waitBySeconds(4);
+        methods.waitBySeconds(5);
 
 
 
@@ -238,78 +244,6 @@ public class MainTest extends BaseTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//a[.='Listelerim']
-
-
-
-        //li[@class='has-open-menu selected']/span[@class='mn-strong common-sprite']
 
 
 
@@ -336,13 +270,6 @@ public class MainTest extends BaseTest {
         }
 
      */
-
-
-
-
-
-
-
 
 
 
