@@ -3,13 +3,13 @@ package com.testinium.methods;
 import com.testinium.driver.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 
 
 import java.time.Duration;
+import java.util.Random;
 
 
 public class Methods {
@@ -30,6 +30,9 @@ public class Methods {
     public WebElement findElement(By by) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
+    public WebElement clickableElement(By by) {return wait.until(ExpectedConditions.elementToBeClickable(by)); }
+
 
     public void click(By by) {
         findElement(by).click();
@@ -88,9 +91,32 @@ public class Methods {
         //WebElement logout = driver.findElement(By.xpath("//a[.='Merhaba Mehmet Akın']"));
         //actions.moveToElement(logout).perform();
         actions.moveToElement(findElement(by)).perform();
-
-
-
     }
+
+    public void random(){
+
+        String a = "//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11665458/wi:100/wh:true']";
+        String b = "//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11735258/wi:100/wh:true']";
+        String c = "//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:983159/wi:100/wh:true']";
+        String d = "//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11681359/wi:100/wh:true']";
+        String e = "//img[@src='https://img.kitapyurdu.com/v1/getImage/fn:11704913/wi:100/wh:true']";
+        String[] dizi = new String[5];
+        dizi[0]=a;
+        dizi[1]=b;
+        dizi[2]=c;
+        dizi[3]=d;
+        dizi[4]=e;
+
+        //Rastgele seçim için
+        Random sec = new Random();
+        int kacinciEleman = sec.nextInt(dizi.length);
+
+        String randomElement = dizi[kacinciEleman];
+
+
+        findElement(By.xpath(randomElement)).click();
+    }
+
+
 
     }

@@ -1,6 +1,13 @@
 package com.testinium.Page;
 
-public class HomePage {
+import com.testinium.methods.Methods;
+
+public class HomePage extends Methods{
+    Methods methods = new Methods();
+
+
+
+
 
 
 }
